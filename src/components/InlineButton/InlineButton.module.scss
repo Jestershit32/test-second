@@ -1,0 +1,12 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.InlineButton {
+	@include font.Medium_14;
+	color: color.$primary;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}

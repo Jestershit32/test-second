@@ -1,0 +1,9 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.HeaderLogo{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}

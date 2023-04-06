@@ -1,0 +1,55 @@
+// title fonts
+@mixin Semibold_36 {
+	font-family: "Gilroy-Semibold";
+	font-size: 36px;
+	font-weight: 600;
+}
+@mixin Semibold_24 {
+	font-family: "Gilroy-Semibold";
+	font-size: 24px;
+	font-weight: 600;
+}
+@mixin Medium_22 {
+	font-family: "Gilroy-Medium";
+	font-size: 22px;
+	font-weight: 500;
+}
+@mixin Medium_20 {
+	font-family: "Gilroy-Medium";
+	font-size: 20px;
+	font-weight: 500;
+}
+@mixin Medium_18 {
+	font-family: "Gilroy-Medium";
+	font-size: 18px;
+	font-weight: 500;
+}
+
+// body fonts
+@mixin Regular_16 {
+	font-family: "Gilroy-Regular";
+	font-size: 16px;
+	font-weight: 500;
+}
+
+@mixin Semibold_14 {
+	font-family: "Gilroy-Semibold";
+	font-size: 14px;
+	font-weight: 600;
+}
+@mixin Medium_14 {
+	font-family: "Gilroy-Medium";
+	font-size: 14px;
+	font-weight: 500;
+}
+@mixin Regular_14 {
+	font-family: "Gilroy-Regular";
+	font-size: 14px;
+	font-weight: 400;
+}
+//caption fonts
+@mixin Regular_12 {
+	font-family: "Gilroy-Regular";
+	font-size: 14px;
+	font-weight: 400;
+}

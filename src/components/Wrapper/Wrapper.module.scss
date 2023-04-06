@@ -1,0 +1,10 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.Wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+}

@@ -1,0 +1,52 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.InputText {
+	min-height: 98px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.Title {
+	@include font.Regular_12;
+	color: color.$grayscale_800;
+}
+.Caption {
+	color: color.$error;
+	@include font.Regular_14;
+}
+.InputBlock {
+	min-width: 280px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 14px 20px;
+	background-color: color.$grayscale-200;
+	border-radius: 14px;
+	border: 1px solid color.$grayscale-200;
+	&:focus-within {
+		border: 1px solid color.$grayscale-800;
+		background-color: color.$grayscale-100;
+	}
+	display: flex;
+	gap: 12px;
+}
+.InputBar {
+	width: 100%;
+	border: none;
+	background: none;
+	outline-style: none;
+	color: color.$grayscale_800;
+	@include font.Regular_14;
+}
+
+.ifError {
+	border: 1px solid color.$error;
+}
+.ifSucces {
+	border: 1px solid color.$success;
+}
+.Icon {
+	z-index: 100;
+}
