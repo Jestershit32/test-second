@@ -17,3 +17,15 @@
 	color: color.$grayscale_800;
 	margin-bottom: 48px;
 }
+@media (width<=780px) {
+	.Window {
+		margin-top: 20px;
+		padding: 80px 31px 60px 31px;
+	}
+}
+
+@media (width<=500px) {
+	.Window {
+		width: 95vw;
+	}
+}

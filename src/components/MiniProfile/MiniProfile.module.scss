@@ -1,0 +1,35 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.MiniProfile {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+.ProfileInfo {
+	@include font.Regular_16;
+	color: color.$grayscale_800;
+	text-decoration: none;
+}
+.ButtonExit {
+	padding: 8px;
+	@include font.Medium_14;
+	color: color.$primary;
+	background: none;
+	border: none;
+	outline: none;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	&:hover .iconExit {
+		width: 16px;
+		height: 16px;
+	}
+}
+.iconExit {
+	width: 16px;
+	height: 16px;
+	object-fit: cover;
+}

@@ -3,12 +3,17 @@
 @use "src/styles/params";
 
 .Header {
-  width: 100%;
+	width: 100%;
 	display: flex;
 	padding: 0px 120px;
 	display: flex;
 	justify-content: space-between;
-  align-items: center;
-  min-height:80px ;
-  border-bottom: 1px solid #efefef;
+	align-items: center;
+	min-height: 80px;
+	border-bottom: 1px solid #efefef;
+}
+@media (width<=780px) {
+	.Header {
+		padding: 0px 15px;
+	}
 }

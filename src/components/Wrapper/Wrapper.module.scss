@@ -3,6 +3,7 @@
 @use "src/styles/params";
 
 .Wrapper {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

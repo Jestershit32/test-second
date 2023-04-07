@@ -4,7 +4,6 @@ import errIcon from "./x_20.svg"
 import succIcon from "./accept_20.svg"
 import openEyeIcon from "./eye_open_20.svg"
 import closeEyeIcon from "./eye_close_20.svg"
-
 interface InputTextProps {
   placeholder: string,
   title: string,
@@ -16,6 +15,7 @@ interface InputTextProps {
 };
 
 
+
 export const InputText: FC<InputTextProps> = ({
   placeholder,
   title,
@@ -25,7 +25,12 @@ export const InputText: FC<InputTextProps> = ({
   error,
   register }) => {
 
+
+
   const [showPass, setShowPass] = useState<boolean>(false);
+
+
+
 
 
 
@@ -38,6 +43,7 @@ export const InputText: FC<InputTextProps> = ({
         className={styles.InputBar}
         type={showPass ? "text" : type}
         placeholder={placeholder} />
+
       {(type === "password") && <img
         className={styles.Icon}
         onClick={() => setShowPass(prev => !prev)}

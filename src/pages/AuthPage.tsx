@@ -6,9 +6,7 @@ import { Wrapper } from "../components/Wrapper/Wrapper";
 import { AuthForm } from "../components/AuthForm/AuthForm";
 
 
-// interface AuthPageProps {
 
-// }
 
 const AuthPage: FC = () => {
 

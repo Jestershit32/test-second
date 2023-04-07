@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client';
+import { Provider } from "react-redux"
 import './styles/index.css';
 import {
   Route,
@@ -7,11 +8,14 @@ import {
   createRoutesFromElements
 } from "react-router-dom";
 
-import { AuthPage } from './pages';
+import { AuthPage, ProfilePage, RegistrPage } from './pages';
+import { store } from './redux';
 
 const GlobalRouts = createRoutesFromElements(
   <>
-    <Route path="/" element={<AuthPage />} />
+    <Route path="/login" element={<AuthPage />} />
+    <Route path="/registration" element={<RegistrPage />} />
+    <Route path="/profile" element={<ProfilePage />} />
   </>
 )
 const BrowserRouter = createBrowserRouter(GlobalRouts)
@@ -23,6 +27,8 @@ const root = ReactDOM.createRoot(
 
 
 root.render(
-  <RouterProvider router={BrowserRouter} />
+  <Provider store={store}>
+    <RouterProvider router={BrowserRouter} />
+  </Provider>
 );
 

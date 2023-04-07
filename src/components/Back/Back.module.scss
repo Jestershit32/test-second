@@ -1,0 +1,27 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.back {
+	padding: 8px;
+	cursor: pointer;
+	gap: 8px;
+	display: flex;
+	align-items: center;
+	color: color.$grayscale_700;
+	@include font.Medium_14;
+	z-index: 100;
+	position: absolute;
+	top: 160px;
+	left: 120px;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+@media (width<=780px) {
+	.back {
+		margin: 20px 15px;
+		align-self: start;
+		position: static;
+	}
+}

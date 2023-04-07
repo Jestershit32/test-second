@@ -25,7 +25,7 @@ export const Button: FC<ButtonProps> = ({ text, styleType, loading, disabled }) 
       <button type='submit' className={styles.Button + " " + (styleType === "primary" ? styles.Button__primary : styles.Button__secondary)}>
         {!loading && text}
 
-        {loading && <img src={styleType === "primary" ? loadingPrime : loadingSecond} alt="" />}
+        {loading && <img className={styles.icon} src={styleType === "primary" ? loadingPrime : loadingSecond} alt="" />}
       </button>
     )
   }
