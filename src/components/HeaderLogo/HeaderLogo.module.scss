@@ -2,8 +2,17 @@
 @use "src/styles/color";
 @use "src/styles/params";
 
-.HeaderLogo{
-  display: flex;
-  gap: 12px;
-  align-items: center;
+.HeaderLogo {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+
+@media (width<=500px) {
+	.HeaderLogo__two {
+		display: none;
+	}
+	.HeaderLogo__one {
+		height: 28px;
+	}
 }

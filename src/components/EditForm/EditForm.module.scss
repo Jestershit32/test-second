@@ -1,0 +1,15 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.RegistrInfoForm {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.Error {
+	padding: 5px 0px;
+	@include font.Medium_14;
+	color: color.$error;
+	text-decoration: none;
+}

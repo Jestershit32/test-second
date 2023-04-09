@@ -13,14 +13,14 @@
 	z-index: 100;
 	position: absolute;
 	top: 160px;
-	left: 120px;
+	left: 32px;
 	&:hover {
 		opacity: 0.8;
 	}
 }
 @media (width<=780px) {
 	.back {
-		margin: 20px 15px;
+		margin: 20px 16px;
 		align-self: start;
 		position: static;
 	}

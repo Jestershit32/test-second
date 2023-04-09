@@ -4,9 +4,9 @@ const baseQuery = fetchBaseQuery({
 	baseUrl:
 		"http://test-task-second-chance-env.eba-ymma3p3b.us-east-1.elasticbeanstalk.com/",
 	prepareHeaders: (headers) => {
-		const accessToken = localStorage.getItem("accessToken");
-		if (accessToken) {
-			headers.set("authorization", accessToken);
+		const refreshToken = localStorage.getItem("refreshToken");
+		if (refreshToken) {
+			headers.set("Authorization", "Bearer " + refreshToken);
 		}
 		return headers;
 	},
@@ -30,11 +30,25 @@ export const purrApi = createApi({
 				body,
 			}),
 		}),
+		checkUser: build.mutation({
+			query: (arg) => ({
+				url: "users",
+				method: "PATCH",
+				body: {},
+			}),
+		}),
 		registration: build.mutation({
 			query: (body) => ({
 				url: "auth/register",
 				method: "POST",
 				body,
+			}),
+		}),
+		logOut: build.mutation({
+			query: (arg) => ({
+				url: "auth/log-out",
+				method: "POST",
+				body: {},
 			}),
 		}),
 	}),
@@ -43,4 +57,6 @@ export const {
 	useLoginMutation,
 	useRegistrationMutation,
 	useUpdateProfileMutation,
+	useCheckUserMutation,
+	useLogOutMutation,
 } = purrApi;

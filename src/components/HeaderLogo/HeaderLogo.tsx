@@ -11,8 +11,8 @@ interface HeaderLogoProps {
 export const HeaderLogo: FC<HeaderLogoProps> = ({ offPurrweb }) => {
   return (
     <div className={styles.HeaderLogo}>
-      <img src={logo} alt='logo' />
-      {!offPurrweb ? <img src={purrweb} alt='purrweb' /> : null}
+      <img src={logo} className={styles.HeaderLogo__one} alt='logo' />
+      <img src={purrweb} className={offPurrweb ? styles.HeaderLogo__two : ''} alt='purrweb' />
     </div>
   )
 };

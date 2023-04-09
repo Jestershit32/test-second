@@ -1,0 +1,22 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.AccordionBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 36px;
+}
+.AccordionList {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.AccordionTitle {
+	@include font.Semibold_24;
+}
+@media (width<=768px) {
+	.AccordionBlock {
+		gap: 28px;
+	}
+}

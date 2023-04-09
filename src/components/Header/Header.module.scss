@@ -12,8 +12,14 @@
 	min-height: 80px;
 	border-bottom: 1px solid #efefef;
 }
-@media (width<=780px) {
+
+@media (width<=768px) {
 	.Header {
-		padding: 0px 15px;
+		padding: 0px 32px;
+	}
+}
+@media (width<=375px) {
+	.Header {
+		padding: 0px 16px;
 	}
 }

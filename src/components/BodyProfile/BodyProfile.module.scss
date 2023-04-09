@@ -1,0 +1,64 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.BodyProfile {
+	width: 100%;
+	padding: 20px 120px;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+.ButtonEdit {
+	padding: 8px;
+	@include font.Medium_14;
+	color: color.$primary;
+	background: none;
+	border: none;
+	outline: none;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+.ProfileTitle {
+	color: color.$grayscale_800;
+	@include font.Semibold_36;
+}
+.InfoBlock {
+	display: flex;
+	gap: 60px;
+}
+.iconEdit {
+	width: 15px;
+	height: 15px;
+	object-fit: cover;
+}
+.TitleBlock {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	gap: 24px;
+}
+@media (width<=768px) {
+	.BodyProfile {
+		padding: 20px 32px;
+	}
+	.ButtonText {
+		display: none;
+	}
+	.InfoBlock {
+		display: grid;
+		gap: 20px;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (width<=375px) {
+	.BodyProfile {
+		padding: 20px 16px;
+	}
+}

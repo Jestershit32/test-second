@@ -1,0 +1,72 @@
+@use "src/styles/font";
+@use "src/styles/color";
+@use "src/styles/params";
+
+.IncreasedBlock {
+	display: flex;
+	padding: 0px 0px 0px 40px;
+	align-items: center;
+	border-radius: 32px;
+	background-color: color.$primary_100;
+	justify-content: space-between;
+	overflow: hidden;
+	max-height: 235px;
+}
+.IncreaseLeft {
+	display: flex;
+	flex-direction: column;
+	min-width: 280px;
+}
+.Title {
+	@include font.Semibold_24;
+	color: color.$grayscale_800;
+	padding-bottom: 12px;
+}
+.Text {
+	@include font.Regular_16;
+	color: color.$grayscale_800;
+	padding-bottom: 36px;
+}
+.illustration {
+	position: relative;
+	bottom: -20px;
+	width: 250px;
+	object-fit: cover;
+	margin: 0px 20vw 0px 20px;
+}
+@media (width<=768px) {
+	.Title {
+		text-align: center;
+	}
+	.Text {
+		text-align: center;
+	}
+	.IncreaseLeft {
+		align-items: stretch;
+		width: 100%;
+	}
+	.IncreasedBlock {
+		flex-direction: column;
+		padding: 28px 15px 0px 15px;
+		gap: 50px;
+		max-height: none;
+	}
+	.illustration {
+		margin: 0px;
+	}
+}
+.linkButton {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	text-decoration: none;
+}
+@media (width<=375px) {
+	.Title {
+		@include font.Medium_18;
+		word-wrap: wrap;
+	}
+	.Text {
+		@include font.Regular_14;
+	}
+}

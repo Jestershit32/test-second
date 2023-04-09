@@ -5,7 +5,7 @@ import styles from "./Window.module.scss"
 
 interface WindowProps {
   children?: ReactNode,
-  form: ReactNode,
+  form: JSX.Element,
   title: string
 };
 

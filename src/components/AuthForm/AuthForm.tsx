@@ -6,6 +6,7 @@ import { CaptionInForm } from '../CaptionInForm/CaptionInForm';
 import { InlineButton } from '../InlineButton/InlineButton';
 import { SubmitHandler, useForm, } from 'react-hook-form';
 import { useLoginMutation } from '../../redux';
+import { useNavigate } from 'react-router-dom';
 
 
 interface IFormInput {
@@ -16,6 +17,7 @@ interface IFormInput {
 
 export const AuthForm: FC = () => {
   const [errorString, setError] = useState<string>("");
+  const nav = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
     defaultValues: {
       email: '',
@@ -38,6 +40,7 @@ export const AuthForm: FC = () => {
         }).unwrap();
         localStorage.setItem("accessToken", payload?.accessToken)
         localStorage.setItem("refreshToken", payload?.refreshToken)
+        nav("/profile")
         console.log(payload)
 
       } catch (error: any) {
@@ -56,10 +59,6 @@ export const AuthForm: FC = () => {
           value: 4,
           message: 'Нужно больше символов'
         },
-        maxLength: {
-          value: 20,
-          message: 'Нужно меньше символов'
-        }
       })}
       placeholder='exammple@mail.ru'
       title='Электронная почта'
@@ -83,12 +82,11 @@ export const AuthForm: FC = () => {
       error={!!errors.password}
       caption={errors?.password?.message}
     />
-    <Button styleType="primary" text='продолжить' loading={isLoading} disabled={!!errors.password || !!errors.email} />
+    <Button styleType="primary" text='Продолжить' loading={isLoading} disabled={!!errors.password || !!errors.email} />
   </form>
     <p className={styles.Error} >{errorString}</p>
     <CaptionInForm text="Еще нет аккаунта?">
       <InlineButton link={"/registration"} text='Зарегистрироваться' />
     </CaptionInForm >
-
   </>
 };

@@ -8,14 +8,17 @@ import {
   createRoutesFromElements
 } from "react-router-dom";
 
-import { AuthPage, ProfilePage, RegistrPage } from './pages';
+import { AuthPage, EditPage, ProfilePage, RegistrPage } from './pages';
 import { store } from './redux';
 
 const GlobalRouts = createRoutesFromElements(
   <>
     <Route path="/login" element={<AuthPage />} />
+    <Route path="/" element={<ProfilePage />} />
     <Route path="/registration" element={<RegistrPage />} />
     <Route path="/profile" element={<ProfilePage />} />
+    <Route path="/profile/edit" element={<EditPage />} />
+    <Route path="/404" element={<EditPage />} />
   </>
 )
 const BrowserRouter = createBrowserRouter(GlobalRouts)

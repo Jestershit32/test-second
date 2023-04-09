@@ -3,10 +3,10 @@
 @use "src/styles/params";
 
 .Button {
+	width: 100%;
 	position: relative;
 	border-radius: 12px;
 	@include font.Semibold_14;
-	min-width: 280px;
 	padding: 16px 0px;
 	border: none;
 	outline-style: none;
@@ -23,7 +23,7 @@
 		&:hover {
 			background-color: color.$primary_600;
 		}
-		&:focus {
+		&:active {
 			&::after {
 				content: "";
 				top: -5px;
@@ -43,7 +43,7 @@
 		&:hover {
 			color: color.$primary_600;
 		}
-		&:focus {
+		&:active {
 			&::after {
 				content: "";
 				top: -5px;

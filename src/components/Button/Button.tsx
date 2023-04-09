@@ -9,10 +9,11 @@ interface ButtonProps {
   disabled?: boolean,
   styleType: "primary" | "secondary"
   loading?: boolean;
+  onClick?: () => void
 };
 
 
-export const Button: FC<ButtonProps> = ({ text, styleType, loading, disabled }) => {
+export const Button: FC<ButtonProps> = ({ text, styleType, loading, disabled, onClick }) => {
 
   if (disabled) {
     return (
@@ -22,7 +23,7 @@ export const Button: FC<ButtonProps> = ({ text, styleType, loading, disabled }) 
     )
   } else {
     return (
-      <button type='submit' className={styles.Button + " " + (styleType === "primary" ? styles.Button__primary : styles.Button__secondary)}>
+      <button type='submit' onClick={onClick} className={styles.Button + " " + (styleType === "primary" ? styles.Button__primary : styles.Button__secondary)}>
         {!loading && text}
 
         {loading && <img className={styles.icon} src={styleType === "primary" ? loadingPrime : loadingSecond} alt="" />}

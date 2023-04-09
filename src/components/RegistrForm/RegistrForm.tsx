@@ -56,10 +56,6 @@ export const RegistrForm: FC = () => {
           value: 4,
           message: 'Нужно больше символов'
         },
-        maxLength: {
-          value: 20,
-          message: 'Нужно меньше символов'
-        }
       })}
       placeholder='exammple@mail.ru'
       title='Электронная почта'

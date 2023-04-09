@@ -1,13 +1,17 @@
 import React, { FC, useState } from 'react';
-import styles from "./RegistrInfoForm.module.scss"
+import styles from "./EditForm.module.scss"
 import { InputText } from '../InputText/InputText';
 import { Button } from '../Button/Button';
 import { SubmitHandler, useForm, } from 'react-hook-form';
-// import { useNavigate } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../redux/hooks';
-import { setWindow, setForm } from '../../redux/slices/registration';
-import { useLoginMutation, useRegistrationMutation } from '../../redux';
+import { useUpdateProfileMutation } from '../../redux';
 import { useNavigate } from 'react-router-dom';
+import { IUser } from '../../types';
+
+
+interface IEditFormProps {
+  user: IUser
+
+}
 interface IFormInput {
   name: string,
   surname: string,
@@ -15,23 +19,20 @@ interface IFormInput {
 };
 
 
-export const RegistrInfoForm: FC = () => {
-  const [errorString, setError] = useState<string>("");
+export const EditForm: FC<IEditFormProps> = ({ user }) => {
 
-  const Form = useAppSelector(state => state.registration.form)
-  const dispatch = useAppDispatch()
-  const [registration, { isLoading }] = useRegistrationMutation()
-  const [login, { isLoading: loginLoading }] = useLoginMutation();
+  const [errorString, setError] = useState<string>("");
+  const [update, { isLoading }] = useUpdateProfileMutation();
   const nav = useNavigate()
 
-  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>
-    ({
-      defaultValues: {
-        name: '',
-        surname: '',
-        phone: ''
-      }
-    });
+
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+    defaultValues: {
+      name: user.name,
+      surname: user.surname,
+      phone: user.phone
+    }
+  });
 
   // const nav = useNavigate()
 
@@ -39,30 +40,17 @@ export const RegistrInfoForm: FC = () => {
     setError("")
     console.log({ name, surname, phone })
     try {
-      const { email, password } = Form
-      const payload = await registration({
-        email,
-        password,
+      const payload = await update({
         name,
         surname,
         phone
       }).unwrap();
 
       console.log(payload)
-
-      const loginPayload = await login({
-        email,
-        password,
-      }).unwrap();
-      console.log(loginPayload)
-      localStorage.setItem("accessToken", loginPayload?.accessToken)
-      localStorage.setItem("refreshToken", loginPayload?.refreshToken)
-      dispatch(setWindow({ window: 1 }))
-      dispatch(setForm({}))
-
+      localStorage.setItem("accessToken", payload?.refreshToken)
       nav("/profile")
     } catch (error) {
-      setError("Не удалось зарегистрироваться")
+      setError("Не удалось изменить данные")
       console.log(error)
     }
 
@@ -71,7 +59,7 @@ export const RegistrInfoForm: FC = () => {
 
   return <>
 
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.RegistrInfoForm}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.EditForm}>
 
       <InputText
         register={register("name", {
@@ -126,7 +114,7 @@ export const RegistrInfoForm: FC = () => {
         caption={errors?.phone?.message} />
 
 
-      <Button styleType="primary" text='продолжить' loading={isLoading || loginLoading} disabled={!!errors.name || !!errors.surname || !!errors.phone} />
+      <Button styleType="primary" text='продолжить' loading={isLoading} disabled={!!errors.name || !!errors.surname || !!errors.phone} />
     </form>
     <p className={styles.Error} >{errorString}</p>
   </>

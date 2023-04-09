@@ -1,20 +1,18 @@
 import { FC, useEffect, useState } from "react";
 import { Header } from "../components/Header/Header";
 import { HeaderLogo } from "../components/HeaderLogo/HeaderLogo";
+import { Window } from "../components/Window/Window";
 import { Wrapper } from "../components/Wrapper/Wrapper";
-import { MiniProfile } from "../components/MiniProfile/MiniProfile";
-import { BodyProfile } from "../components/BodyProfile/BodyProfile";
+import { EditForm } from "../components/EditForm/EditForm";
+import { useNavigate } from "react-router-dom";
 import { useCheckUserMutation } from "../redux";
 import { IUser } from "../types";
-import { useNavigate } from "react-router-dom";
 
+const EditPage: FC = () => {
 
-
-
-const ProfilePage: FC = () => {
   const nav = useNavigate();
   const [checkUser, { isLoading }] = useCheckUserMutation()
-  const [user, setUser] = useState<IUser>({
+  const [userState, setUser] = useState<IUser>({
     email: "",
     id: "",
     name: "",
@@ -26,27 +24,24 @@ const ProfilePage: FC = () => {
     try {
       const user: IUser = await checkUser({}).unwrap();
       console.log(user)
-      setUser(user)
+      setUser(user);
+      console.log(userState);
     } catch (error) {
       nav("/login");
       console.log(error)
     }
   }
-
   useEffect(() => {
     handlerFetch()
   }, [])
 
-  if (isLoading) {
-    return (<>Ждите</>)
-  }
 
   return (
     <Wrapper >
-      <Header logo={<HeaderLogo offPurrweb />} rightMenu={<MiniProfile user={user} />} />
-      <BodyProfile user={user} />
-    </Wrapper >
+      <Header logo={<HeaderLogo />} />
+      {!isLoading && <Window title="Заполните данные о себе" form={<EditForm user={userState} />} />}
+    </Wrapper>
   )
 }
 
-export default ProfilePage;
+export default EditPage;
